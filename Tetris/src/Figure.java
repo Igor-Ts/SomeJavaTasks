@@ -22,34 +22,75 @@ public class Figure {
     }
 
     public void left() { // left movement
-
+        x--;
+        if (!isCurrentPositionAvailable())
+            x++;
     }
 
     public void right() { //right movement
-
+        x++;
+        if (!isCurrentPositionAvailable())
+            x--;
     }
 
-    public void up() { //up movement
-
+    public void up() { //need if the figure goes to busy place
+        y--;
     }
 
     public void down() { // down movement
-
+        y++;
     }
 
     public void downMaximum() {  // the figure falling up to down
-
+        while (isCurrentPositionAvailable())
+        {
+            y++;
+        }
+        y--;
     }
 
     public void rotate() {  // the figure rotation
+        int[][] matrix2 = new int[3][3];
 
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                matrix2[i][j] = matrix[j][i];
+            }
+        }
+
+        matrix = matrix2;
     }
 
-    public boolean isCurrentPositionAvaliable() {  //check statement
+    public boolean isCurrentPositionAvailable() {  //check statement
+        Field field = Tetris.game.getField();
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (matrix[i][j] == 1) {
+                    if (y + i >= field.getHeight())
+                        return false;
+
+                    Integer value = field.getValue(x + j, y + i);
+                    if (value == null || value == 1)
+                        return false;
+                }
+            }
+        }
         return true;
     }
 
     public void landed() { //colling if the figure can't move more
+        Field field = Tetris.game.getField();
 
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                if (matrix[i][j] == 1)
+                    field.setValue(x + j, y + i, 1);
+            }
+        }
     }
 }

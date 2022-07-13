@@ -1,0 +1,6 @@
+Here we have 4 actions
+left movement (button left or numpad 4)
+right movement (button right or numpad 6)
+figure rotation (numpad 5)
+falling down (space)
+exit (button q)

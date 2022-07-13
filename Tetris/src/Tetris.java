@@ -20,72 +20,59 @@ public class Tetris {
         figure = null;
     }
     public static void main(String[] args) throws Exception {
-        KeyboardObserver o = new KeyboardObserver();
         game = new Tetris(6, 10);
         game.run();
     }
 
     /**
-     *  Основной цикл программы.
-     *  Тут происходят все важные действия
+     *  The main program
      */
     public void run() throws Exception
     {
-        //Создаем объект "наблюдатель за клавиатурой" и стартуем его.
+        //create the object "keyBoardObserver" and starts him
         KeyboardObserver keyboardObserver = new KeyboardObserver();
         keyboardObserver.start();
 
-        //выставляем начальное значение переменной "игра окончена" в ЛОЖЬ
+        //put the starting value false
         isGameOver = false;
-        //создаем первую фигурку посередине сверху: x - половина ширины, y - 0.
+        //create first figure in up center: x - half width and y - 0.
         figure = FigureFactory.createRandomFigure(field.getWidth() / 2, 0);
 
-        //пока игра не окончена
+        //game in not ended
         while (!isGameOver)
         {
-            //"наблюдатель" содержит события о нажатии клавиш?
             if (keyboardObserver.hasKeyEvents())
             {
-                //получить самое первое событие из очереди
+                //get the first event in queue
                 KeyEvent event = keyboardObserver.getEventFromTop();
-                //Если равно символу 'q' - выйти из игры.
+                //if this one equals "q" - exit game Если равно символу 'q' - выйти из игры.
                 if (event.getKeyChar() == 'q') return;
-                //Если "стрелка влево" - сдвинуть фигурку влево
+                //If "button left" - move the figure to left
                 if (event.getKeyCode() == KeyEvent.VK_LEFT)
                     figure.left();
-                    //Если "стрелка вправо" - сдвинуть фигурку вправо
+                    //If "button right" - move the figure to right
                 else if (event.getKeyCode() ==  KeyEvent.VK_RIGHT)
                     figure.right();
-                    //Если  код клавиши равен 12 ("цифра 5 на доп. клавиатуре") - повернуть фигурку
+                    //If the button code equals 12 (numpad 5) - rotate figure
                 else if (event.getKeyCode() ==  12)
                     figure.rotate();
-                    //Если "пробел" - фигурка падает вниз на максимум
+                    //If "space" - the figure fall down to max
                 else if (event.getKeyCode() ==  KeyEvent.VK_SPACE)
                     figure.downMaximum();
             }
 
-            step();             //делаем очередной шаг
-            field.print();      //печатаем состояние "поля"
-            Thread.sleep(300);  //пауза 300 миллисекунд - 1/3 секунды
+            step();             //do next step
+            field.print();      //print field statement
+            Thread.sleep(300);  //pause 300 m.sec
         }
 
-        //Выводим сообщение "Game Over"
+        //print message "Game Over"
         System.out.println("Game Over");
-    }
-
-    public void setFigure(Figure figure)
-    {
-        this.figure = figure;
-    }
-
-    public void setField(Field field)
-    {
-        this.field = field;
     }
     public void step(){
         figure.down(); //pull the figure down
 
-        if (!figure.isCurrentPositionAvaliable()){
+        if (!figure.isCurrentPositionAvailable()){
             figure.up();
             figure.landed();
 

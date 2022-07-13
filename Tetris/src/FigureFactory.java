@@ -1,6 +1,6 @@
 public class FigureFactory {
     /**
-     * Набор из шести шаблонов для фигурок
+     * Set of six figures template
      */
     public static final int[][][] BRICKS = {{
             {1, 1, 0},                          //   X X
@@ -23,13 +23,13 @@ public class FigureFactory {
             {0, 1, 0},                          //     X
             {0, 0, 0}}, {                       //
 
-            {1, 1, 1},                          //   X X X
-            {1, 1, 1},                          //   X X X
-            {0, 0, 0}}                          //
+            {1, 0, 0},                          //   X
+            {1, 0, 0},                          //   X
+            {1, 1, 0}}                          //   X X
     };
 
     /**
-     * Метод выбирает случайный шаблон и создает с ним новую фигурку.
+     * Method took a random template and create new figure with him.
      */
     public static Figure createRandomFigure(int x,int y) {
         int index = (int) (Math.random() * 6);
