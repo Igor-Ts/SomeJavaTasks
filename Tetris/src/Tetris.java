@@ -83,6 +83,16 @@ public class Tetris {
         this.field = field;
     }
     public void step(){
+        figure.down(); //pull the figure down
 
+        if (!figure.isCurrentPositionAvaliable()){
+            figure.up();
+            figure.landed();
+
+            isGameOver = figure.getY() <= 1; // check mb game is ended
+
+            field.removeFullLines(); // remove line
+            figure = FigureFactory.createRandomFigure(field.getWidth() / 2, 0); // add new figure
+        }
     }
 }
