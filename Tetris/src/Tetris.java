@@ -15,8 +15,13 @@ public class Tetris {
     }
 
 
+    public Tetris(int width, int height) {
+        field = new Field(width, height);
+        figure = null;
+    }
     public static void main(String[] args) throws Exception {
-        game = new Tetris();
+        KeyboardObserver o = new KeyboardObserver();
+        game = new Tetris(6, 10);
         game.run();
     }
 
@@ -68,6 +73,15 @@ public class Tetris {
         System.out.println("Game Over");
     }
 
+    public void setFigure(Figure figure)
+    {
+        this.figure = figure;
+    }
+
+    public void setField(Field field)
+    {
+        this.field = field;
+    }
     public void step(){
 
     }
