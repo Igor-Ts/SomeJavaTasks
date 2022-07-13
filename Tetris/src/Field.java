@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Field {
     private int width;
     private int height;
@@ -75,7 +77,32 @@ public class Field {
     }
 
     public void removeFullLines() { //need to remove all filled lines and turn down next line
+        //create Arraylist to store all lines
+        ArrayList<int[]> lines = new ArrayList<>();
 
+        //Copy all not filled lines in Arraylist
+        for (int i = 0; i <height; i++)
+        {
+            //Calculate X count in line  - just sum all values
+            int count = 0;
+            for (int j = 0; j < width; j++)
+            {
+                count += matrix[i][j];
+            }
+
+            //if line sum not equals his width - add into list
+            if (count != width)
+                lines.add(matrix[i]);
+        }
+
+        //Add missing lines in the beginning list.
+        while (lines.size() < height)
+        {
+            lines.add(0,new int[width]);
+        }
+
+        //modify list back to the matrix
+        matrix = lines.toArray(new int[height][width]);
     }
 
     public Integer getValue(int x, int y) { //return the value what was in matrix
