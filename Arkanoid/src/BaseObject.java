@@ -1,4 +1,4 @@
-public class BaseObject {
+public abstract class BaseObject {
 
     private double x;
     private double y;
@@ -8,6 +8,19 @@ public class BaseObject {
         this.x = x;
         this.y = y;
         this.radius = radius;
+    }
+
+    public abstract void draw();
+
+    public abstract void move();
+
+    //This method will determine whether the objects "crossed" or not.
+    public boolean isIntersec(BaseObject o){
+        double disX = x - o.x;
+        double disY = y - o.y;
+        double disSqrt = Math.sqrt(disX * disY + disX * disY);
+        double disSqrt2 = Math.max(radius, o.radius);
+        return disSqrt <= disSqrt2;
     }
 
     public double getX() {
