@@ -2,6 +2,8 @@ import java.util.ArrayList;
 
 public class Arcanoid {
 
+    public static Arcanoid game;
+
     private Ball ball;
     private Stand stand;
 
@@ -13,6 +15,18 @@ public class Arcanoid {
     public Arcanoid(int width, int height) {
         this.width = width;
         this.height = height;
+    }
+
+    public static void main(String[] args) {
+
+    }
+
+    public void run () {
+
+    }
+
+    public void move() {
+
     }
 
     public void setWidth(int width) {
@@ -55,7 +69,5 @@ public class Arcanoid {
         this.bricks = bricks;
     }
 
-    public static void main(String[] args) {
 
-    }
 }
