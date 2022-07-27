@@ -32,6 +32,22 @@ public class Canvas {
         }
     }
 
+    public void clear() {
+        matrix = new char[height][width];
+    }
+
+    public void print() {
+        System.out.println();
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                System.out.print(" " + matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println();
+        System.out.println();
+    }
+
     public char[][] getMatrix() {
         return matrix;
     }
