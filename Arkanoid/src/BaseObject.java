@@ -1,8 +1,8 @@
 public abstract class BaseObject {
 
-    private double x;
-    private double y;
-    private double radius;
+    protected double x;
+    protected double y;
+    protected double radius;
 
     public BaseObject(double x, double y, double radius) {
         this.x = x;
@@ -10,7 +10,7 @@ public abstract class BaseObject {
         this.radius = radius;
     }
 
-    public abstract void draw();
+    public abstract void draw(Canvas canvas);
 
     public abstract void move();
 

@@ -8,13 +8,13 @@ public class Brick extends BaseObject {
             {0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0},
     };
-    public Brick(double x, double y, double radius) {
-        super(x, y, radius);
+    public Brick(double x, double y) {
+        super(x, y, 3);
     }
 
     @Override
-    public void draw() {
-
+    public void draw(Canvas canvas) {
+        canvas.drawMatrix(x - radius + 1, y, matrix, 'H');
     }
 
     @Override
