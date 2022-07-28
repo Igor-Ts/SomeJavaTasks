@@ -33,11 +33,40 @@ public class Ball extends BaseObject {
         } else {
             x += dx;
             y += dy;
+            checkRebound(1, Arcanoid.game.getWidth(), 1, Arcanoid.game.getHeight() + 5);
         }
     }
 
     public void start() {
         isFrozen = false;
+    }
+
+    public void setDirection() {
+        double angel = Math.toRadians(direction);
+        dx = Math.cos(angel) * speed;
+        dy = -Math.sin(angel) * speed;
+    }
+// check if the ball whether the ball flew over the wall.
+    public void checkRebound(int minx, int maxx, int miny, int maxy) {
+        if (x < minx) {
+            x = minx + (minx - x);
+            dx = -dx;
+        }
+
+        if (x > maxx) {
+            x = maxx - (x - maxx);
+            dx = -dx;
+        }
+
+        if (y < miny) {
+            y = miny + (miny - y);
+            dy = -dy;
+        }
+
+        if (y > maxy) {
+            y = maxy - (y - maxy);
+            dy = -dy;
+        }
     }
 
     public double getSpeed() {
