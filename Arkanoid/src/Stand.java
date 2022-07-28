@@ -20,12 +20,20 @@ public class Stand extends BaseObject {
 
     @Override
     public void draw(Canvas canvas) {
-
+        canvas.drawMatrix(x - radius + 1, y, matrix, 'M');
     }
 
     @Override
     public void move() {
+        x = x + (speed * direction);
+    }
 
+    public void moveLeft() {
+        direction = -1;
+    }
+
+    public void moveRight() {
+        direction = 1;
     }
 
     public double getSpeed() {
