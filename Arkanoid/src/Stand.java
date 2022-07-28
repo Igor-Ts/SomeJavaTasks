@@ -1,4 +1,7 @@
-public class Stand extends BaseObject{
+public class Stand extends BaseObject {
+
+    private double speed;
+    private double direction;
 
     //picture to draw
     private static int[][] matrix = {
@@ -9,8 +12,10 @@ public class Stand extends BaseObject{
             {0, 0, 0, 0, 0},
     };
 
-    public Stand(double x, double y, double radius) {
-        super(x, y, radius);
+    public Stand(double x, double y) {
+        super(x, y, 3);
+        speed = 1;
+        direction = 0;
     }
 
     @Override
@@ -21,5 +26,13 @@ public class Stand extends BaseObject{
     @Override
     public void move() {
 
+    }
+
+    public double getSpeed() {
+        return speed;
+    }
+
+    public double getDirection() {
+        return direction;
     }
 }
