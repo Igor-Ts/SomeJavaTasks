@@ -8,10 +8,11 @@ public class Arcanoid {
     private Ball ball;
     private Stand stand;
 
-    private ArrayList<Brick> bricks;
+    private ArrayList<Brick> bricks = new ArrayList<>();
 
     private int width;
     private int height;
+    private boolean isGameOver = false;
 
     public Arcanoid(int width, int height) {
         this.width = width;
@@ -85,18 +86,69 @@ public class Arcanoid {
         System.out.println("Game Over!");
     }
 
+    public void checkBricksBump() {
+        for (Brick currentBrick : bricks)
+        {
+            if (ball.isIntersec(currentBrick))
+            {
+                double angel = Math.random() * 360;
+                ball.setDirection(angel);
+                bricks.remove(currentBrick);
+                break;
+            }
+        }
+    }
+
+    public void checkStandBump() {
+        if (ball.isIntersec(stand))
+        {
+            double angel = 80 + Math.random() * 20;
+            ball.setDirection(angel);
+        }
+    }
+
+    public void checkEndGame() {
+        if(ball.getY() >= height) {
+            isGameOver = true;
+        }
+    }
+
     public void move() {
-        stand.move();
         ball.move();
+        stand.move();
     }
 
     public void draw (Canvas canvas) {
-        ball.draw(canvas);
-        stand.draw(canvas);
+        drawBorders(canvas);
         for (Brick br: bricks) {
             br.draw(canvas);
         }
+        ball.draw(canvas);
+        stand.draw(canvas);
+    }
 
+    private void drawBorders(Canvas canvas)
+    {
+        //draw game
+        for (int i = 0; i < width + 2; i++)
+        {
+            for (int j = 0; j < height + 2; j++)
+            {
+                canvas.setPoint(i, j, '.');
+            }
+        }
+
+        for (int i = 0; i < width + 2; i++)
+        {
+            canvas.setPoint(i, 0, '-');
+            canvas.setPoint(i, height + 1, '-');
+        }
+
+        for (int i = 0; i < height + 2; i++)
+        {
+            canvas.setPoint(0, i, '|');
+            canvas.setPoint(width + 1, i, '|');
+        }
     }
 
     public void setWidth(int width) {

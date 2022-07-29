@@ -18,7 +18,7 @@ public abstract class BaseObject {
     public boolean isIntersec(BaseObject o){
         double disX = x - o.x;
         double disY = y - o.y;
-        double disSqrt = Math.sqrt(disX * disY + disX * disY);
+        double disSqrt = Math.sqrt(disX * disX + disY * disY);
         double disSqrt2 = Math.max(radius, o.radius);
         return disSqrt <= disSqrt2;
     }

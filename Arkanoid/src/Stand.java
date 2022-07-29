@@ -1,7 +1,7 @@
 public class Stand extends BaseObject {
 
-    private double speed;
-    private double direction;
+    private double speed = 1;
+    private double direction = 0;
 
     //picture to draw
     private static int[][] matrix = {
@@ -14,8 +14,6 @@ public class Stand extends BaseObject {
 
     public Stand(double x, double y) {
         super(x, y, 3);
-        speed = 1;
-        direction = 0;
     }
 
     @Override
@@ -26,6 +24,7 @@ public class Stand extends BaseObject {
     @Override
     public void move() {
         x = x + (speed * direction);
+        checkBorders(radius, Arcanoid.game.getWidth() - radius + 1, 1, Arcanoid.game.getHeight() + 1);
     }
 
     public void moveLeft() {

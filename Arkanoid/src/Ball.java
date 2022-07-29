@@ -38,10 +38,13 @@ public class Ball extends BaseObject {
     }
 
     public void start() {
+        this.setDirection(direction);
         isFrozen = false;
     }
 
-    public void setDirection() {
+    public void setDirection(double direction) {
+        this.direction = direction;
+
         double angel = Math.toRadians(direction);
         dx = Math.cos(angel) * speed;
         dy = -Math.sin(angel) * speed;
