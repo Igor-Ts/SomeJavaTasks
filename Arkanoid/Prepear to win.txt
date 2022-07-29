@@ -1,0 +1,4 @@
+Here we have 3 actions
+Left movement (button left or numpad 4)
+Right movement (button right or numpad 6)
+Start game (space)
