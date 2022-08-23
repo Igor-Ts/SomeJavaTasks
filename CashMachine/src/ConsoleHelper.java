@@ -47,7 +47,7 @@ public class ConsoleHelper {
                 writeMessage("This data is incorrect");
                 continue;
             }
-            if (denomination <=0 || count <=0 || array.length > 2){
+            if (denomination <= 0 || count <= 0 || array.length > 2){
                 writeMessage("This data is incorrect");
                 continue;
             }

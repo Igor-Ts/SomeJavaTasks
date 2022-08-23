@@ -3,7 +3,7 @@ import java.util.Map;
 
 public class CurrencyManipulator {
 
-    private String currencyCode;
+    public String currencyCode;
     private Map<Integer, Integer> denominations = new HashMap<>();
 
     public CurrencyManipulator(String currencyCode) {
@@ -19,5 +19,13 @@ public class CurrencyManipulator {
             denominations.put(denomination, denominations.get(denomination) + count);
         else
             denominations.put(denomination,count);
+    }
+
+    public int getTotalAmount() {
+        int result = 0;
+        for (Map.Entry<Integer,Integer> maps: denominations.entrySet()) {
+            result += (maps.getKey() * maps.getValue());
+        }
+        return result;
     }
 }
