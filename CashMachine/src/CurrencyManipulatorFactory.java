@@ -1,3 +1,5 @@
+package com.somejavatasks.test;
+
 import java.util.HashMap;
 import java.util.Map;
 

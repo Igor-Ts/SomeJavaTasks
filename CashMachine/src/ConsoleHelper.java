@@ -1,3 +1,5 @@
+package com.somejavatasks.test;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -13,7 +15,7 @@ public class ConsoleHelper {
         String message = " ";
         try {
             message = reader.readLine();
-        } catch (IOException ignored){
+        } catch (IOException ignored) {
 
         }
         return message;
@@ -33,8 +35,8 @@ public class ConsoleHelper {
     }
 
     public static String[] getValidTwoDigits(String currencyCode) {
-        String [] array;
-        while(true) {
+        String[] array;
+        while (true) {
             writeMessage("Please, write denomination after put spacebar and write number of currencies (ex. 200 1200)");
             int denomination;
             int count;
@@ -47,7 +49,7 @@ public class ConsoleHelper {
                 writeMessage("This data is incorrect");
                 continue;
             }
-            if (denomination <= 0 || count <= 0 || array.length > 2){
+            if (denomination <= 0 || count <= 0 || array.length > 2) {
                 writeMessage("This data is incorrect");
                 continue;
             }
@@ -68,5 +70,5 @@ public class ConsoleHelper {
                 continue;
             }
         }
-}
+    }
 }

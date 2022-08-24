@@ -1,3 +1,5 @@
+package com.somejavatasks.test;
+
 public enum Operation {
     INFO,
     DEPOSIT,

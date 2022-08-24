@@ -1,4 +1,4 @@
-package exception;
+package com.somejavatasks.test.exception;
 
 public class InterruptOperationException {
 
