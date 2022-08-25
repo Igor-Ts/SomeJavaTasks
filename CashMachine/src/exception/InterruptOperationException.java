@@ -1,6 +1,6 @@
 package com.somejavatasks.test.exception;
 
-public class InterruptOperationException {
+public class InterruptOperationException extends Throwable {
 
     public InterruptOperationException() {
 

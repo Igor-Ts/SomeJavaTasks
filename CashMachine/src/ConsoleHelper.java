@@ -1,5 +1,7 @@
 package com.somejavatasks.test;
 
+import com.somejavatasks.test.exception.InterruptOperationException;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -11,17 +13,20 @@ public class ConsoleHelper {
         System.out.println(message);
     }
 
-    public static String readString() {
+    public static String readString() throws InterruptOperationException {
         String message = " ";
         try {
             message = reader.readLine();
         } catch (IOException ignored) {
 
         }
+        if ("EXIT".equalsIgnoreCase(message)){
+            throw new InterruptOperationException();
+        }
         return message;
     }
 
-    public static String askCurrencyCode() {
+    public static String askCurrencyCode() throws InterruptOperationException {
         String currencyCode;
         writeMessage("Please, write currency code(EUR, USD, RUB etc.)");
         currencyCode = readString();
@@ -34,7 +39,7 @@ public class ConsoleHelper {
         return currencyCode.toUpperCase();
     }
 
-    public static String[] getValidTwoDigits(String currencyCode) {
+    public static String[] getValidTwoDigits(String currencyCode) throws InterruptOperationException {
         String[] array;
         while (true) {
             writeMessage("Please, write denomination after put spacebar and write number of currencies (ex. 200 1200)");
@@ -65,9 +70,8 @@ public class ConsoleHelper {
             try {
                 int value = Integer.parseInt(readString());
                 return Operation.getAllowableOperationByOrdinal(value);
-            } catch (Exception e) {
+            } catch (Exception | InterruptOperationException e) {
                 writeMessage("Invalid number");
-                continue;
             }
         }
     }
