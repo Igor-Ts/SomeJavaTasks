@@ -21,9 +21,7 @@ public enum Operation {
             case 4 -> {
                 return EXIT;
             }
-            default -> {
-                throw new IllegalArgumentException();
-            }
+            default -> throw new IllegalArgumentException();
 
         }
     }
