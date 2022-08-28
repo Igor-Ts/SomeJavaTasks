@@ -1,0 +1,9 @@
+ATM emulator.
+
+The operations we are support as follows:
+deposit money, withdraw money, show ATM status.
+ATM also support multi-currency.
+We'll operate with banknotes with those that we place in an ATM.
+If there are not enough banknotes to withdraw the required amount, then we will inform the user about it.
+
+Enjoy!
