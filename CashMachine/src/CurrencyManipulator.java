@@ -49,14 +49,11 @@ public class CurrencyManipulator {
         denominationsReverse.putAll(denominations);
         int tempAmount = expectedAmount;
 
-        for (Map.Entry<Integer, Integer> pair : denominationsReverse.entrySet())
-        {
-            if (pair.getKey() <= tempAmount)
-            {
+        for (Map.Entry<Integer, Integer> pair : denominationsReverse.entrySet()) {
+            if (pair.getKey() <= tempAmount) {
                 int quotient = tempAmount / pair.getKey();
 
-                if (quotient <= pair.getValue())
-                {
+                if (quotient <= pair.getValue()) {
                     mapToCash.put(pair.getKey(), quotient);
                     tempAmount -= pair.getKey() * quotient;
                     pair.setValue(pair.getValue() - quotient);
@@ -64,8 +61,7 @@ public class CurrencyManipulator {
                         denominations.remove(pair.getKey());
                     else
                         denominations.put(pair.getKey(), pair.getValue());
-                } else
-                {
+                } else {
                     mapToCash.put(pair.getKey(), pair.getValue());
                     tempAmount -= pair.getKey() * pair.getValue();
                     pair.setValue(0);
@@ -81,15 +77,12 @@ public class CurrencyManipulator {
             CurrencyManipulatorFactory.getAllCurrencyManipulators().remove(CurrencyManipulatorFactory.getManipulatorByCurrencyCode(currencyCode));
         if (tempAmount != 0)
             throw new NotEnoughMoneyException();
-        else
-        {
-            for (Map.Entry<Integer, Integer> pair : mapToCash.entrySet())
-            {
+        else {
+            for (Map.Entry<Integer, Integer> pair : mapToCash.entrySet()) {
                 ConsoleHelper.writeMessage(String.format("\t%d - %d", pair.getKey(), pair.getValue()));
             }
             ConsoleHelper.writeMessage("Transaction is done!");
         }
-
         return mapToCash;
     }
 }
