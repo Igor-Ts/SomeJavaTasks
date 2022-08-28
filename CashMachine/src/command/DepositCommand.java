@@ -11,6 +11,11 @@ public class DepositCommand implements Command {
         String code = ConsoleHelper.askCurrencyCode();
         String[] eue = ConsoleHelper.getValidTwoDigits(code);
         CurrencyManipulator currency = CurrencyManipulatorFactory.getManipulatorByCurrencyCode(code);
-        currency.addAmount(Integer.parseInt(eue[0]), Integer.parseInt(eue[1]));
+        try {
+            currency.addAmount(Integer.parseInt(eue[0]), Integer.parseInt(eue[1]));
+        } catch (Exception e) {
+
+        }
+
     }
 }

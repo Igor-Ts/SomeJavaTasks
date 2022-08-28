@@ -1,6 +1,6 @@
 package com.somejavatasks.test.exception;
 
-public class NotEnoughMoneyException {
+public class NotEnoughMoneyException extends Exception {
 
     public NotEnoughMoneyException() {
 

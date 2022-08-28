@@ -63,14 +63,14 @@ public class ConsoleHelper {
         return array;
     }
 
-    public static Operation askOperation() {
+    public static Operation askOperation() throws InterruptOperationException {
 
         while (true) {
             writeMessage("Please write what operation do you want? 1 - Info; 2 - Deposit; 3 - Withdraw; 4 - Exit");
             try {
                 int value = Integer.parseInt(readString());
                 return Operation.getAllowableOperationByOrdinal(value);
-            } catch (Exception | InterruptOperationException e) {
+            } catch (IllegalArgumentException e) {
                 writeMessage("Invalid number");
             }
         }
